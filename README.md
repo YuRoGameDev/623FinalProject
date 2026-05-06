@@ -2,9 +2,10 @@
 
 This is a simple project utilizing a locally created PostgreSQL database which has several transactions executed on it using Python.
 
-## Required Packages
+## Required Packages/Tools
 - Python 3
 - PostgreSQL 18
+- Git Bash (to execute the bash file)
 
 ## How to Install
 - Download the repo
