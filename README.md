@@ -9,10 +9,10 @@ This is a simple project utilizing a locally created PostgreSQL database which h
 ## How to Install
 - Download the repo
 - Create a .env in the project folder. Insert PGPASSWORD="(Your postgres user password)"
-- Run the DataBaseSetUp bash file to install the Python PostgreSQL local packages and initalize the default database *
+- Run the DataBaseSetUp bash file to install the Python PostgreSQL local packages and initalize the default database **
 - Run the main.py Python script
 
-*The database uses the default postgres username, hosted locally on port 5432. To change this if needed, you have to edit both the bash file and the subsequent main.py file
+**The database uses the default postgres username, hosted locally on port 5432. To change this if needed, you have to edit both the bash file and the subsequent main.py file
 
 ## Transactions
 1. Delete product p1 from Product and Stock
