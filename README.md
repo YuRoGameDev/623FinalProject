@@ -22,3 +22,7 @@ This is a simple project utilizing a locally created PostgreSQL database which h
 4. Rename depot d1 to dd1 in Depot and Stock
 5. Add product (p100, cd, 5) to Product and (p100, d2, 50) to Stock
 6. Add depot (d100, Chicago, 100) to Depot and (p1, d100, 100) to Stock
+
+## Possible Issues
+- "psql is not found" when running the bash file. Make sure the path to psql is set correctly
+- Make sure there is no space between PGPASSWORD,=, and your password. 
