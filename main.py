@@ -123,8 +123,8 @@ if __name__ == "__main__":
         if inp == "Q":
             break
         elif inp == "V":
-            db.view_tables()
+            db.run_view_tables()
         elif inp in COMMANDS:
-            db.call_procedure(COMMANDS[inp])
+            db._call_procedure(COMMANDS[inp])
 
     db.close()    
