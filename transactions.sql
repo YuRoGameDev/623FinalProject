@@ -3,8 +3,6 @@
 CREATE OR REPLACE PROCEDURE transaction1()
 LANGUAGE plpgsql AS $$
 BEGIN
-    -- Stock rows must be deleted first due to FK constraint
-    DELETE FROM stock   WHERE prodid = 'p1';
     DELETE FROM product WHERE prodid = 'p1';
 
     IF NOT FOUND THEN
@@ -21,8 +19,6 @@ $$;
 CREATE OR REPLACE PROCEDURE transaction2()
 LANGUAGE plpgsql AS $$
 BEGIN
-    -- Stock rows must be deleted first due to FK constraint
-    DELETE FROM stock WHERE depid = 'd1';
     DELETE FROM depot WHERE depid = 'd1';
 
     IF NOT FOUND THEN
@@ -39,11 +35,8 @@ $$;
 CREATE OR REPLACE PROCEDURE transaction3()
 LANGUAGE plpgsql AS $$
 BEGIN
-    -- Defer FK check until Python issues COMMIT.
-    SET CONSTRAINTS fk_stock_prodid DEFERRED;
- 
     UPDATE product SET prodid = 'pp1' WHERE prodid = 'p1';
-    UPDATE stock   SET prodid = 'pp1' WHERE prodid = 'p1';
+    -- UPDATE stock   SET prodid = 'pp1' WHERE prodid = 'p1';
 
     IF NOT FOUND THEN
         RAISE NOTICE 'Product p1 does not exist';
@@ -59,11 +52,8 @@ $$;
 CREATE OR REPLACE PROCEDURE transaction4()
 LANGUAGE plpgsql AS $$
 BEGIN
-    -- Defer FK check until Python issues COMMIT.
-    SET CONSTRAINTS fk_stock_depid DEFERRED;
- 
     UPDATE depot SET depid = 'dd1' WHERE depid = 'd1';
-    UPDATE stock SET depid = 'dd1' WHERE depid = 'd1';
+    -- UPDATE stock SET depid = 'dd1' WHERE depid = 'd1';
 
     IF NOT FOUND THEN
         RAISE NOTICE 'Depot d1 does not exist';
